@@ -1,9 +1,11 @@
 "use strict";
-import {app, BrowserWindow} from "electron";
+import {app, BrowserWindow, Menu} from "electron";
 import * as path from "path";
 import * as url from "url";
+import {createMenu} from "./menu";
 
 let mainWindow: BrowserWindow;
+let menu: Menu;
 
 function createWindow() {
   mainWindow = new BrowserWindow({width: 800, height: 600});
@@ -19,7 +21,10 @@ function createWindow() {
   });
 }
 
-app.on("ready", createWindow);
+app.on("ready", () => {
+  createWindow();
+  menu = createMenu();
+});
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
