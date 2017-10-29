@@ -17,7 +17,10 @@ function createWindow(config: GameConfig) {
     // 64x64
     icon: path.join(__dirname, "icons/icon.png"),
     show: false,
-    resizable: false
+    resizable: false,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js")
+    }
   });
 
   mainWindow.once("ready-to-show", () => {
@@ -29,6 +32,11 @@ function createWindow(config: GameConfig) {
     protocol: "file:",
     slashes: true
   }));
+
+  if (process.env.NODE_ENV === "development") {
+    mainWindow.webContents.once("devtools-opened", () => setImmediate(() => mainWindow.focus()));
+    mainWindow.webContents.openDevTools({mode: "detach"});
+  }
 
   mainWindow.once("closed", function () {
     mainWindow = null;
