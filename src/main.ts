@@ -3,14 +3,15 @@ import {app, BrowserWindow, Menu} from "electron";
 import * as path from "path";
 import * as url from "url";
 import {createMenu} from "./menu";
+import {GameConfig, loadGameConfig} from "./config";
 
 let mainWindow: BrowserWindow;
 let menu: Menu;
 
-function createWindow() {
+function createWindow(config: GameConfig) {
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: config.width,
+    height: config.height,
     show: false,
     resizable: false
   });
@@ -30,19 +31,20 @@ function createWindow() {
   });
 }
 
+const loading = loadGameConfig();
 app.once("ready", () => {
-  createWindow();
-  menu = createMenu();
+  loading.then(config => {
+    createWindow(config);
+    menu = createMenu();
+  })
+    .catch(e => {
+      console.error("Unknown error: ", e);
+      app.quit();
+    });
 });
 
-app.on("window-all-closed", () => {
+app.once("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
-  }
-});
-
-app.on("activate", () => {
-  if (mainWindow === null) {
-    createWindow();
   }
 });
