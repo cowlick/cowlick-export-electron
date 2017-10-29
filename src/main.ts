@@ -12,6 +12,8 @@ function createWindow(config: GameConfig) {
   mainWindow = new BrowserWindow({
     width: config.width,
     height: config.height,
+    // 64x64
+    icon: path.join(__dirname, "icons/icon.png"),
     show: false,
     resizable: false
   });
