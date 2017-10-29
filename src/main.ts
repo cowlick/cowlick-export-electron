@@ -11,7 +11,12 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    show: false,
     resizable: false
+  });
+
+  mainWindow.once("ready-to-show", () => {
+    mainWindow.show();
   });
 
   mainWindow.loadURL(url.format({
@@ -20,12 +25,12 @@ function createWindow() {
     slashes: true
   }));
 
-  mainWindow.on("closed", function () {
+  mainWindow.once("closed", function () {
     mainWindow = null;
   });
 }
 
-app.on("ready", () => {
+app.once("ready", () => {
   createWindow();
   menu = createMenu();
 });
