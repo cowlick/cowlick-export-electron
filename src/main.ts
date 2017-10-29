@@ -19,6 +19,7 @@ function createWindow(config: GameConfig) {
     show: false,
     resizable: false,
     webPreferences: {
+      nodeIntegration: false,
       preload: path.join(__dirname, "preload.js")
     }
   });
