@@ -8,6 +8,8 @@ import {GameConfig, loadGameConfig} from "./config";
 let mainWindow: BrowserWindow;
 let menu: Menu;
 
+const urlPattern = new RegExp("^https?:$");
+
 function createWindow(config: GameConfig) {
   mainWindow = new BrowserWindow({
     width: config.width,
@@ -32,6 +34,16 @@ function createWindow(config: GameConfig) {
     mainWindow = null;
   });
 }
+
+app.on("browser-window-created", function (event, window) {
+  window.webContents.on("new-window", function(event, targetUrl, frameName, disposition, options) {
+    const protocol = url.parse(targetUrl).protocol;
+    if(! urlPattern.test(protocol)) {
+      event.preventDefault();
+      throw new Error("invalid url:" + url);
+    }
+  });
+});
 
 const loading = loadGameConfig();
 app.once("ready", () => {
