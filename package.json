@@ -1,0 +1,17 @@
+{
+  "name": "elephant",
+  "version": "0.0.1",
+  "main": "build/main.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "electron ."
+  },
+  "author": "pocketberserker",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/electron": "1.6.10",
+    "electron": "1.7.9",
+    "typescript": "2.5.3"
+  }
+}

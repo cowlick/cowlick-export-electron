@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "noLib": false,
+    "sourceMap": false,
+    "noImplicitAny": true,
+    "outDir": "./build"
+  },
+  "files": [
+    "./src/main.ts"
+  ]
+}
