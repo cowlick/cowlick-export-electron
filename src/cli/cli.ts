@@ -12,22 +12,15 @@ function readPackageJson(baseDir: string) {
 const packageJsonDir = path.resolve(__dirname, "..")
 const packageJson = readPackageJson(packageJsonDir);
 
-const root = commandpost
-  .create<{}, {}>("cowlick")
-  .version(packageJson.version, "-v, --version")
-  .action(() => {
-    process.stdout.write(root.helpText() + "\n");
-  });
-
 interface ExportArgs {
-  target: string;
+  targetDir: string;
 }
 
-root
-  .subCommand<{}, ExportArgs>("electron [target]")
-  .description("export to electron")
+const root = commandpost
+  .create<{}, ExportArgs>("cowlick-export-electron [targetDir]")
+  .version(packageJson.version, "-v, --version")
   .action((opts, args) => {
-    const baseDir = path.resolve(process.cwd(), args.target);
+    const baseDir = path.resolve(process.cwd(), args.targetDir);
     const targetPackageJson = readPackageJson(baseDir);
     replaceIndex(baseDir, targetPackageJson);
     const templateDir = path.join(packageJsonDir, "template");

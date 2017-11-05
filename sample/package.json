@@ -8,7 +8,7 @@
     "scan:assets": "cd ./game && akashic scan asset",
     "bundle": "npm run bundle:html && npm run bundle:electron",
     "bundle:html": "cd ./game && akashic export html --output ../dist",
-    "bundle:electron": "node ../lib/cli.js electron ."
+    "bundle:electron": "node ../lib/cli.js ."
   },
   "dependencies": {
   },
