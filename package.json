@@ -1,16 +1,30 @@
 {
-  "name": "elephant",
+  "name": "cowlick-export-electron",
   "version": "0.0.1",
-  "main": "build/main.js",
+  "description": "A module to convert your Akashic game to a Electron.",
+  "main": "lib/cli.js",
+  "bin": {
+    "cowlick-export-electron": "./bin/cowlick-export-electron"
+  },
+  "files": [
+    "lib",
+    "template",
+    "bin"
+  ],
   "scripts": {
-    "build": "tsc -p .",
-    "start": "electron ."
+    "prepare": "npm run build",
+    "build": "npm run build:cli && npm run build:template",
+    "build:cli": "tsc -p ./src/cli",
+    "build:template": "tsc -p ./src/template"
   },
   "author": "pocketberserker",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "pocketberserker/cowlick-export-electron.git"
+  },
   "dependencies": {},
   "devDependencies": {
-    "@types/electron": "1.6.10",
     "electron": "1.7.9",
     "typescript": "2.5.3"
   }

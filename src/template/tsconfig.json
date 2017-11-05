@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2015",
     "module": "commonjs",
     "noLib": false,
     "sourceMap": false,
     "noImplicitAny": true,
-    "outDir": "./build"
+    "outDir": "../../template"
   },
   "files": [
-    "./src/main.ts",
-    "./src/preload.ts"
+    "./main.ts",
+    "./preload.ts"
   ]
 }
