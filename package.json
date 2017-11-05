@@ -26,10 +26,12 @@
   },
   "dependencies": {
     "cheerio": "1.0.0-rc.2",
-    "commandpost": "1.2.1"
+    "commandpost": "1.2.1",
+    "fs-extra": "4.0.2"
   },
   "devDependencies": {
     "@types/cheerio": "0.22.5",
+    "@types/fs-extra": "4.0.3",
     "@types/mocha": "2.2.44",
     "electron": "1.7.9",
     "espower-typescript": "8.1.2",

@@ -3,6 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as commandpost from "commandpost";
 import {replaceIndex} from "./Html";
+import {copyTemplate} from "./Template";
 
 function readPackageJson(baseDir: string) {
   return JSON.parse(fs.readFileSync(path.resolve(baseDir, "package.json"), "utf8"))
@@ -21,6 +22,8 @@ const root = commandpost
     const baseDir = path.resolve(process.cwd(), args.target);
     const targetPackageJson = readPackageJson(baseDir);
     replaceIndex(baseDir, targetPackageJson);
+    const templateDir = path.join(path.dirname(packageJson), "template");
+    copyTemplate(templateDir, baseDir, targetPackageJson);
   });
 
 commandpost
