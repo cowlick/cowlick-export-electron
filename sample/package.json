@@ -1,0 +1,19 @@
+{
+  "name": "sample",
+  "private": true,
+  "main": "./dist/main.js",
+  "scripts": {
+    "build": "npm run scan:assets",
+    "sandbox": "akashic-sandbox game",
+    "scan:assets": "cd ./game && akashic scan asset",
+    "bundle": "npm run bundle:html && npm run bundle:electron",
+    "bundle:html": "cd ./game && akashic export html --output ../dist",
+    "bundle:electron": "node ../lib/cli.js electron ."
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@akashic/akashic-cli": "1.2.1",
+    "@akashic/akashic-sandbox": "0.13.4"
+  }
+}

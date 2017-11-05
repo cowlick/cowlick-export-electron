@@ -4,7 +4,7 @@
   "description": "A module to convert your Akashic game to a Electron.",
   "main": "lib/cli.js",
   "bin": {
-    "cowlick-export-electron": "./bin/cowlick-export-electron"
+    "cowlick-export-electron": "./bin/run"
   },
   "files": [
     "lib",
@@ -16,7 +16,12 @@
     "build": "npm run build:cli && npm run build:template",
     "build:cli": "tsc -p ./src/cli",
     "build:template": "tsc -p ./src/template",
-    "test": "mocha --compilers ts:espower-typescript/guess test/*.ts"
+    "test": "mocha --compilers ts:espower-typescript/guess test/*.ts",
+    "sample:install": "cd sample && npm install",
+    "sample:build": "cd sample && npm run build",
+    "sample:bundle": "cd sample && npm run bundle",
+    "sandbox": "cd sample && npm run sandbox",
+    "start": "electron ./sample"
   },
   "author": "pocketberserker",
   "license": "MIT",

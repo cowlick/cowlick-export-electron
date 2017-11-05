@@ -9,20 +9,28 @@ function readPackageJson(baseDir: string) {
   return JSON.parse(fs.readFileSync(path.resolve(baseDir, "package.json"), "utf8"))
 }
 
-const packageJson = readPackageJson(path.resolve(__dirname, ".."));
+const packageJsonDir = path.resolve(__dirname, "..")
+const packageJson = readPackageJson(packageJsonDir);
 
-interface RootArgs {
+const root = commandpost
+  .create<{}, {}>("cowlick")
+  .version(packageJson.version, "-v, --version")
+  .action(() => {
+    process.stdout.write(root.helpText() + "\n");
+  });
+
+interface ExportArgs {
   target: string;
 }
 
-const root = commandpost
-  .create<{}, RootArgs>("cowlick export electron [target]")
-  .version(packageJson.version, "-v, --version")
+root
+  .subCommand<{}, ExportArgs>("electron [target]")
+  .description("export to electron")
   .action((opts, args) => {
     const baseDir = path.resolve(process.cwd(), args.target);
     const targetPackageJson = readPackageJson(baseDir);
     replaceIndex(baseDir, targetPackageJson);
-    const templateDir = path.join(path.dirname(packageJson), "template");
+    const templateDir = path.join(packageJsonDir, "template");
     copyTemplate(templateDir, baseDir, targetPackageJson);
   });
 
