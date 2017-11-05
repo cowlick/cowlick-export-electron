@@ -15,7 +15,8 @@
     "prepare": "npm run build",
     "build": "npm run build:cli && npm run build:template",
     "build:cli": "tsc -p ./src/cli",
-    "build:template": "tsc -p ./src/template"
+    "build:template": "tsc -p ./src/template",
+    "test": "mocha --compilers ts:espower-typescript/guess test/*.ts"
   },
   "author": "pocketberserker",
   "license": "MIT",
@@ -23,9 +24,17 @@
     "type": "git",
     "url": "pocketberserker/cowlick-export-electron.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "cheerio": "1.0.0-rc.2",
+    "commandpost": "1.2.1"
+  },
   "devDependencies": {
+    "@types/cheerio": "0.22.5",
+    "@types/mocha": "2.2.44",
     "electron": "1.7.9",
+    "espower-typescript": "8.1.2",
+    "mocha": "4.0.1",
+    "power-assert": "1.4.4",
     "typescript": "2.5.3"
   }
 }
