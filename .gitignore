@@ -66,3 +66,4 @@ typings/
 lib/
 template/
 sample/dist/
+sample/package-lock.json

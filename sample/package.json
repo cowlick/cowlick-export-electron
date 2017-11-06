@@ -10,8 +10,7 @@
     "bundle:html": "cd ./game && akashic export html --output ../dist",
     "bundle:electron": "node ../lib/cli.js ."
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@akashic/akashic-cli": "1.2.1",
     "@akashic/akashic-sandbox": "0.13.4"
