@@ -27,7 +27,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "pocketberserker/cowlick-export-electron.git"
+    "url": "https://github.com/cowlick/cowlick-export-electron.git"
   },
   "dependencies": {
     "cheerio": "1.0.0-rc.2",
