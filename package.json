@@ -1,5 +1,5 @@
 {
-  "name": "cowlick-export-electron",
+  "name": "@cowlick/export-electron",
   "version": "0.0.1",
   "description": "A module to convert your Akashic game to a Electron.",
   "main": "lib/cli.js",
@@ -43,5 +43,8 @@
     "mocha": "5.2.0",
     "power-assert": "1.6.1",
     "typescript": "3.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
