@@ -1,5 +1,5 @@
 "use strict";
-import * as assert from "assert";
+import assert = require("assert");
 import {replaceHtmlTitle} from "../src/cli/Html";
 
 describe("Html", () => {
